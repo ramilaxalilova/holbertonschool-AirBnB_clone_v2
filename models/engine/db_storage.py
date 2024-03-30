@@ -29,3 +29,14 @@ class DBStorage:
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
+    def all(self, cls=None):
+        '''query on the current database session'''
+
+        if cls is None:
+        objects = self.__session.query(State).all()
+            objects.extended(self.__session.query(User).all())
+            objects.extended(self.__session.query(City).all())
+            objects.extended(self.__session.query(Place).all())
+            objects.extended(self.__session.query(Review).all())
+            objects.extended(self.__session.query(Amenity).all())
+
