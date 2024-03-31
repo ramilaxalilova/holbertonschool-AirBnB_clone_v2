@@ -44,4 +44,17 @@ class DBStorage:
                 cls = eval(cls)
             objs = self.__session.query(cls)
         return {"{}.{}"
-                .format(type(obj).__name__, obj.id): obj for obj in objs}
+                .format(type(obj).__name__, obj.id): obj for obj in objs
+
+    def new(self, obj):
+        """Add new object"""
+        self.__session.add(obj)
+
+    def save(self):
+        """Save changes"""
+        self.__session.commit()
+
+    def delete(self, obj=None):
+        """Delete object"""
+        if obj:
+            self.__session.delete(obj)}
