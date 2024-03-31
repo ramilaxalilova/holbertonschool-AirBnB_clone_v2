@@ -39,4 +39,9 @@ class DBStorage:
             objects.extended(self.__session.query(Place).all())
             objects.extended(self.__session.query(Review).all())
             objects.extended(self.__session.query(Amenity).all())
-
+            else:
+            if isinstance(cls, str):
+                cls = eval(cls)
+            objs = self.__session.query(cls)
+        return {"{}.{}"
+                .format(type(obj).__name__, obj.id): obj for obj in objs}
