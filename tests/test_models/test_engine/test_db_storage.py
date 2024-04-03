@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-""" Module for testing DB storage """
-from os import getenv
+""" Module for testing database storage"""
 import unittest
 from models.base_model import BaseModel
-from models import storage
+from models import storage, type_of_storage
+from os import getenv
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import (create_engine)
 
 
-@unittest.skipIf(getenv("HBNB_TYPE_STORAGE") != "db", "DBStorage")
+@unittest.skipIf(type_of_storage != "db", "Storage type: Database")
 class TestDBStorage(unittest.TestCase):
     """ Class to test the database storage method """
 
@@ -15,3 +17,4 @@ class TestDBStorage(unittest.TestCase):
         new = BaseModel()
         temp = storage.all()
         self.assertIsInstance(temp, dict)
+
