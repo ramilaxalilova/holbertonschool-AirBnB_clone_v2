@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+uu#!/usr/bin/python3
 """test for console to make it start working"""
 import unittest
 from io import StringIO
