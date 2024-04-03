@@ -14,7 +14,7 @@ class test_Place(test_basemodel):
         self.value = Place
         self.place1 = Place(city_id="d80e0344-63eb-434a-b1e0-07783522124e",
                             user_id="d81e0344-63eb-434a-b1e0-07783522124e",
-                            name="Isa",
+                            name="Los Pollos Hermanos",
                             description="Amazing place :)",
                             number_rooms=3,
                             number_bathrooms=4,
