@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel, Base
-from models.city import City
 import models
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
@@ -20,16 +19,14 @@ if getenv("HBNB_TYPE_STORAGE") == "db":
         )
 
 else:
+    name = ""
 
-    class State(BaseModel):
-        """State class"""
-
-        name = ""
-
-        @property
-        def cities(self):
-            cities_list = []
-            for city in cities:
-                if city.state_id == self.id:
-                    cities_list.append(city)
-            return cities_list
+    @property
+    def cities(self):
+            """returns list of Cities and some relationships"""
+            cities_instances = []
+            cities_dict = models.storage.all(models.City)
+            for key, value in cities_dict.items():
+                if self.id == value.state_id:
+                    cities_instances.append(value)
+            return cities_instances
