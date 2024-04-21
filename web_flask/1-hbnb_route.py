@@ -1,19 +1,19 @@
 #!/usr/bin/python3
-"""Script to start a Flask web application with 2 commands """
+"""doc"""
+
+
 from flask import Flask
 
 app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def hello_world():
-    """ Returns some text. """
+@app.route('/')
+def hello():
     return "Hello HBNB!"
 
 
-@app.route('/hbnb', strict_slashes=False)
-def hello():
-    """ Return other text. """
+@app.route('/hbnb')
+def hbnb():
     return "HBNB"
 
 

@@ -1,28 +1,28 @@
 #!/usr/bin/python3
-"""Script to start a Flask web application with 3 view functions """
+"""doc"""
+
+
 from flask import Flask
+from markupsafe import escape
+
 
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
 @app.route('/')
-def hello_world():
-    """ Returns some text. """
+def hello():
     return "Hello HBNB!"
 
 
 @app.route('/hbnb')
-def hello():
-    """ Return other text. """
+def hbnb():
     return "HBNB"
 
 
 @app.route('/c/<text>')
-def c_text(text):
-    """ replace text with variable. """
-    text = text.replace('_', ' ')
-    return "C {}".format(text)
+def c(text):
+    new_text = text.replace('_', ' ')
+    return f"C {escape(new_text)}"
 
 
 if __name__ == '__main__':
