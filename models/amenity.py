@@ -6,8 +6,8 @@ from sqlalchemy.orm import relationship
 
 
 class Amenity(BaseModel, Base):
-    """This class defines a amenity by various attributes"""
-
-    __tablename__ = "amenities"
+    """Amenity class"""
+    __tablename__ = 'amenities'
     name = Column(String(128), nullable=False)
-    place_amenities = relationship("Place", secondary="place_amenity")
+    place_amenities = relationship("Place", secondary='place_amenity',
+                                   overlaps="amenities", viewonly=False)
